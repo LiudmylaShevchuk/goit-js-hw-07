@@ -2,9 +2,9 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryEl = document.querySelector('.gallery')
 
-const galeryMarcup = createGalleryItemsMarcup(galleryItems);
+const galleryMarcup = createGalleryItemsMarcup(galleryItems);
 
-galleryEl.insertAdjacentHTML('beforeend', galeryMarcup);
+galleryEl.insertAdjacentHTML('beforeend', galleryMarcup);
 
 galleryEl.addEventListener('click', onGalleryItemClick);
 
@@ -18,41 +18,100 @@ function createGalleryItemsMarcup(galleryItems) {
                         src="${preview}"
                         data-source="${original}"
                         alt="${description}"
-                    />
+                        width = "340"></img>
                 </a>
 </div>
             `
     })
-        .join("");
+        .join("")
 
 };
 
 function onGalleryItemClick(evt) {
+
     evt.preventDefault();
-    if (!evt.target.classList.contains("gallery__image")) {
+
+    if (evt.target.nodeName !== "IMG") {
         return;
     }
-    const lightbox = new simpleLightbox(".gallery__item", {
-        captionDelay: 250,
-        captionData: "alt",
-    });
+};
 
-
-    // const lightbox = (evt) => {
-    //     const ESC_KEY = "Escape";
-    //     if (evt.code === ESC_KEY) {
-    //         instance.close();
-    //     }
-    // };
-
-    // const instance = basicLightbox.create(
-    //     `
-    //     `,
-    //     {
-
-    //     }
-    // );
-    // instance.show();
-
+document.querySelector('gallery__link').onClick = () => {
+    basicLightbox.create(`
+    <img src="assets/images/image.png" width="800" height="600"> `)
+        .show();
 }
+
+//     const instance = basicLightbox
+//         .create(`<img src="${evt.target.dataset.source}
+//     "width="800" height="600">`,
+//             onShow: (instance) => {
+//                 window.addEventListener("keydown", onShowModal);
+//             },
+//             onClose: (instance) => {
+//                 window.removeEventListener("keydown", onCloseModal);
+//             }
+//         )
+//     instance.show();
+
+
+const onCloseModal = (evt) => {
+    const ESC_KEY = "Escape";
+    if (evt.code === ESC_KEY) {
+        instance.close();
+    }
+};
+
+
+
+
+// };
+
+
+
+
+
+//     });
+// }
+
+// const instance = basicLightbox.create(`
+//     <img src="assets/images/image.png" width="800" height="600">
+// `)
+
+// instance.show();
+
+
+
+//     }
+
+
+
+
+// const lightbox = (evt) => {
+//     const ESC_KEY = "Escape";
+//     if (evt.code === ESC_KEY) {
+//         instance.close();
+//     }
+// };
+
+// const instance = basicLightbox.create(`
+//     <img src="${evt.target.dataset.source}" width="800" height="600">`
+// ),
+
+
+
+
+//         onclose (instance) => {
+//             window.addEventListener("keydown", onCloseModal);
+//         },
+//             onshow(instance) => {
+//         window.removeEventListener("keydown", onCloseModal);
+
+//     },
+
+//     instance.show()
+
+
+
+
 
