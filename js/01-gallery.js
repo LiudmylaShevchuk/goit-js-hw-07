@@ -34,33 +34,33 @@ function onGalleryItemClick(evt) {
     if (evt.target.nodeName !== "IMG") {
         return;
     }
-};
 
-document.querySelector('gallery__link').onClick = () => {
-    basicLightbox.create(`
-    <img src="assets/images/image.png" width="800" height="600"> `)
-        .show();
+    const instance = basicLightbox.create(`<img src="${evt.target.dataset.source}"
+        width="800" height="600"/>`,
+        {
+            onShow: () => document.addEventListener("keydown", onCloseModal),
+            onClose: () => document.removeEventListener("keydown", onCloseModal),
+        }
+    );
+    instance.show();
+
+    function onCloseModal(evt) {
+        if (evt.code === "Escape") {
+            instance.close();
+        }
+    }
 }
 
-//     const instance = basicLightbox
-//         .create(`<img src="${evt.target.dataset.source}
-//     "width="800" height="600">`,
-//             onShow: (instance) => {
-//                 window.addEventListener("keydown", onShowModal);
-//             },
-//             onClose: (instance) => {
-//                 window.removeEventListener("keydown", onCloseModal);
-//             }
-//         )
-//     instance.show();
 
 
-const onCloseModal = (evt) => {
-    const ESC_KEY = "Escape";
-    if (evt.code === ESC_KEY) {
-        instance.close();
-    }
-};
+// document.querySelector('gallery__link').onClick = () => {
+//     basicLightbox.create(`
+//     <img src="assets/images/image.png" width="800" height="600"> `)
+//         .show();
+// }
+
+
+
 
 
 
