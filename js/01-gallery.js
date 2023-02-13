@@ -53,63 +53,6 @@ function onGalleryItemClick(evt) {
 
 
 
-// document.querySelector('gallery__link').onClick = () => {
-//     basicLightbox.create(`
-//     <img src="assets/images/image.png" width="800" height="600"> `)
-//         .show();
-// }
-
-
-
-
-
-
-
-// };
-
-
-
-
-
-//     });
-// }
-
-// const instance = basicLightbox.create(`
-//     <img src="assets/images/image.png" width="800" height="600">
-// `)
-
-// instance.show();
-
-
-
-//     }
-
-
-
-
-// const lightbox = (evt) => {
-//     const ESC_KEY = "Escape";
-//     if (evt.code === ESC_KEY) {
-//         instance.close();
-//     }
-// };
-
-// const instance = basicLightbox.create(`
-//     <img src="${evt.target.dataset.source}" width="800" height="600">`
-// ),
-
-
-
-
-//         onclose (instance) => {
-//             window.addEventListener("keydown", onCloseModal);
-//         },
-//             onshow(instance) => {
-//         window.removeEventListener("keydown", onCloseModal);
-
-//     },
-
-//     instance.show()
 
 
 
