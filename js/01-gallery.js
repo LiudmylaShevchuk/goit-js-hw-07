@@ -1,16 +1,17 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 
-const galleryEl = document.querySelector('.gallery')
+const galleryEl = document.querySelector(".gallery");
 
 const galleryMarcup = createGalleryItemsMarcup(galleryItems);
 
-galleryEl.insertAdjacentHTML('beforeend', galleryMarcup);
+galleryEl.insertAdjacentHTML("beforeend", galleryMarcup);
 
-galleryEl.addEventListener('click', onGalleryItemClick);
+galleryEl.addEventListener("click", onGalleryItemClick);
 
 function createGalleryItemsMarcup(galleryItems) {
-    return galleryItems.map(({ preview, original, description }) => {
-        return `
+    return galleryItems
+        .map(({ preview, original, description }) => {
+            return `
             <div class= "gallery__item">
                 <a class="gallery__link" href="${original}">
                     <img
@@ -21,21 +22,20 @@ function createGalleryItemsMarcup(galleryItems) {
                         width = "340"></img>
                 </a>
 </div>
-            `
-    })
-        .join("")
-
-};
+            `;
+        })
+        .join("");
+}
 
 function onGalleryItemClick(evt) {
-
     evt.preventDefault();
 
     if (evt.target.nodeName !== "IMG") {
         return;
     }
 
-    const instance = basicLightbox.create(`<img src="${evt.target.dataset.source}"
+    const instance = basicLightbox.create(
+        `<img src="${evt.target.dataset.source}"
         width="800" height="600"/>`,
         {
             onShow: () => document.addEventListener("keydown", onCloseModal),
@@ -50,11 +50,3 @@ function onGalleryItemClick(evt) {
         }
     }
 }
-
-
-
-
-
-
-
-
